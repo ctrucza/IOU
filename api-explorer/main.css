@@ -1,0 +1,64 @@
+﻿.node {
+}
+
+.child-node {
+    margin-left: 20px;
+}
+
+.string {
+    display: inline;
+    color: green;
+}
+
+.number {
+    color: blue;
+}
+
+.boolean {
+    color: blue;
+}
+
+.array {
+    background-color: beige;
+}
+
+.href {
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.inline, .node, .number, .boolean, .href, .array {
+    display: inline;
+}
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.content {
+    padding: 10px;
+}
+
+.workspace .btn-toolbar {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.response-container {
+    background-color: whitesmoke;
+    overflow: scroll;
+    padding: 5px;
+    -webkit-box-shadow: 0 0 3px black;
+    -ms-box-shadow: 0 0 3px black;
+    box-shadow: 0 0 3px black;
+    font-size: small;
+	white-space: nowrap;
+    height: 200px;
+}
+
+.history-buttons {
+    margin-top: 5px;
+}
+
+div.href:hover {
+    text-decoration: underline;
+}

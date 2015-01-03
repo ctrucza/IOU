@@ -1,0 +1,16 @@
+{
+	"href" : "/api/foo",
+	"name" : "the foo collection",
+	"length" : 3.14,
+	"items" : [
+		{
+			"href" : "/api/foo-items/1"
+		},
+		{
+			"href" : "/api/foo-items/2"
+		},
+		{
+			"href" : "/api/foo-items/3"
+		}
+	]
+}

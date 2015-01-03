@@ -1,0 +1,8 @@
+{
+	"href" : "/api/root",
+	"number" : 1,
+	"text" : "Hi there :)",
+	"flag" : true,
+	"foo" : { "href" : "/api/foo" },
+	"bar" : { "href" : "/api/bar" }
+}
