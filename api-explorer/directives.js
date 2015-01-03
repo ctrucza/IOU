@@ -4,7 +4,7 @@ app.directive('linkify', function () {
 
         link: function (scope, element, attrs) {
             element.bind('click', function () {
-				var href = element.text();
+                var href = element.text();
                 scope.$emit('hrefClicked', href);
             });
         }
@@ -27,13 +27,15 @@ app.directive('node', function (RecursionHelper) {
             return RecursionHelper.compile(element, function (scope) {
                 scope.type = getType(scope.nodeValue);
 
-                scope.notSorted = function(obj) {
+                scope.notSorted = function (obj) {
                     if (!obj) {
                         return [];
                     }
 
                     // We do not want the "$$hashKey" property (added by angular js)
-                    return _.filter(Object.keys(obj), function(key) { return key != "$$hashKey"; });
+                    return _.filter(Object.keys(obj), function (key) {
+                        return key != "$$hashKey";
+                    });
                 };
             });
         }
@@ -52,26 +54,26 @@ app.directive('node', function (RecursionHelper) {
 });
 
 
-app.directive('jsonInput', function() {
+app.directive('jsonInput', function () {
     return {
         restrict: 'A',
         require: 'ngModel',
-        link: function(scope, element, attr, ngModel) {
-			ngModel.$parsers.push(parseJson);
-			ngModel.$formatters.push(toJson);
-			
-			function parseJson(json) {
-				try {
-					return JSON.parse(json);
-				} catch (error) {
-					// TODO: Change background to red to signal error.
-					return {};
-				}
-			}
-			
-			function toJson(obj) {
-				return JSON.stringify(obj, null, 4);
-			}
+        link: function (scope, element, attr, ngModel) {
+            ngModel.$parsers.push(parseJson);
+            ngModel.$formatters.push(toJson);
+
+            function parseJson(json) {
+                try {
+                    return JSON.parse(json);
+                } catch (error) {
+                    // TODO: Change background to red to signal error.
+                    return {};
+                }
+            }
+
+            function toJson(obj) {
+                return JSON.stringify(obj, null, 4);
+            }
         }
     };
 });

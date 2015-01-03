@@ -70,7 +70,7 @@
                     <span class="glyphicon glyphicon-remove"></span>
                 </label>
             </div>
-            
+
         </div>
 
         <div>
@@ -86,30 +86,31 @@
                 </accordion-group>
             </accordion>
         </div>
-        
+
         <div>
-			<div class="response-container">
-				<div>
-					<div data-node data-node-value="response.data"></div>
-				</div>
-			</div>
-		</div>
+            <div class="response-container">
+                <div>
+                    <div data-node data-node-value="response.data"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-	<div data-ng-controller="HistoryController">
-		<div class="btn-toolbar history-buttons">
-			<div class="btn-group">
-				<button class="btn btn-primary btn-primary" ng-disabled="history.prev.length <= 1" ng-click="goBack()">
-					Back
-				</button>
-			</div>
-			<div class="btn-group">
-				<button class="btn btn-primary btn-primary" ng-disabled="history.next.length == 0" ng-click="goForward()">
-					Forward
-				</button>
-			</div>
-		</div>
-	</div>
+
+    <div data-ng-controller="HistoryController">
+        <div class="btn-toolbar history-buttons">
+            <div class="btn-group">
+                <button class="btn btn-primary btn-primary" ng-disabled="history.prev.length <= 1" ng-click="goBack()">
+                    Back
+                </button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary btn-primary" ng-disabled="history.next.length == 0"
+                        ng-click="goForward()">
+                    Forward
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="vendor/angular.js"></script>
