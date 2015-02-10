@@ -25,15 +25,6 @@ namespace IOUService
         }
     }
 
-    public class IOUController : ApiController
-    {
-        public string GetCurrentUserName()
-        {
-            Console.WriteLine(User.Identity.Name);
-            return User.Identity.Name;
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)

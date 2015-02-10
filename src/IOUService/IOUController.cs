@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Web.Http;
 
 namespace IOUService
@@ -15,6 +14,7 @@ namespace IOUService
             return User.Identity.Name;
         }
 
+        // This being a Get is very baaad
         [HttpGet]
         public void SendThankYouNoteTo(string recipient)
         {
@@ -25,10 +25,16 @@ namespace IOUService
             }
             notes[me].Add(recipient);
         }
+
         [HttpGet]
-        public List<string> GetNotesSentByMe(string me)
+        public List<string> GetNotesSentByMe()
         {
-            return notes[me];
+            return notes[GetCurrentUserName()];
         }
+
+        //public List<string> GetMyNotes()
+        //{
+        //    return something;
+        //}
     }
 }
