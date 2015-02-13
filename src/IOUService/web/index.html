@@ -5,13 +5,44 @@
     <title>IOU</title>
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
-    <div data-ng-controller="MainController">
-        <pre>{{ counter }}</pre>
-        <button class="btn btn-primary" ng-click="increment()">
-            Click!
-        </button>
+    <div class="container">
+        <div data-ng-controller="MainController">
+            <h1>YMMD</h1>
+
+            <h3 class="col-md-12">Hi there, {{ username }}!</h3>
+
+            <h3 class="col-md-12">Send a <em>thank you</em> note!</h3>
+
+            <div class="form-group">
+                <label>Recipient:</label>
+                <input type="text" ng-model="recipient" placeholder="somebody" class="form-control">
+
+                <button type="button" class="thank-you-button btn btn-primary form-control" ng-click="thankYou()">
+                    Thank you
+                </button>
+            </div>
+
+            <h3>Notes sent by me</h3>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Note</th>
+                            <th>Sent on</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="note in sentNotes">
+                            <td>{{ note.text }}</td>
+                            <td>{{ note.date | date : 'medium' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="lib/angular.js"></script>
@@ -20,7 +51,7 @@
     <script type="text/javascript">
         var app = angular.module('app', ['ui.bootstrap']);
     </script>
-    
+
     <script type="text/javascript" src="controllers/MainController.js"></script>
 </body>
 </html>
