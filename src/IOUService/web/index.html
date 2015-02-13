@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+    <title>IOU</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-theme.min.css">
+</head>
+<body>
+    <div data-ng-controller="MainController">
+        <pre>{{ counter }}</pre>
+        <button class="btn btn-primary" ng-click="increment()">
+            Click!
+        </button>
+    </div>
+
+    <script type="text/javascript" src="lib/angular.js"></script>
+    <script type="text/javascript" src="lib/angular-ui-bootstrap.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module('app', ['ui.bootstrap']);
+    </script>
+    
+    <script type="text/javascript" src="controllers/MainController.js"></script>
+</body>
+</html>
