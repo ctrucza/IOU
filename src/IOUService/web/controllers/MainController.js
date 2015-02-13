@@ -1,17 +1,29 @@
-﻿app.controller("MainController", function ($scope) {
-    $scope.username = "Somebody";
+﻿app.controller("MainController", function ($scope, IOUFacade) {
 
-    $scope.sentNotes = [
-        { text: "Thanks, test1", date: new Date() },
-        { text: "Thanks, test2", date: new Date() },
-        { text: "Thanks, test3", date: new Date() },
-        { text: "Thanks, test4", date: new Date() },
-        { text: "Thanks, test5", date: new Date() }
-    ];
+    $scope.username = "...";
+    $scope.sentNotes = [];
+
+    refreshUsername();
+    refreshNotes();
+
+    function refreshUsername() {
+        IOUFacade.getUsername().then(function (username) {
+            $scope.username = username;
+        });
+    }
+    
+    function refreshNotes() {
+        IOUFacade.getNotesSentByMe().then(function (notes) {
+            $scope.sentNotes = notes;
+        });
+    }
 
     $scope.thankYou = function () {
-        var text = "Thank you, " + $scope.recipient;
-        var note = { text: text, date: new Date() };
-        $scope.sentNotes.unshift(note);
+        var recipient = $scope.recipient;
+        IOUFacade.sendThankYouNoteTo(recipient).then(refreshNotes).then(clearRecipient);
     };
+
+    function clearRecipient() {
+        $scope.recipient = null;
+    }
 });

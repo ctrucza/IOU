@@ -28,18 +28,9 @@
             <h3>Notes sent by me</h3>
             <div>
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Note</th>
-                            <th>Sent on</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="note in sentNotes">
-                            <td>{{ note.text }}</td>
-                            <td>{{ note.date | date : 'medium' }}</td>
-                        </tr>
-                    </tbody>
+                    <tr ng-repeat="note in sentNotes track by $index">
+                        <td>{{ note }}</td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -53,5 +44,6 @@
     </script>
 
     <script type="text/javascript" src="controllers/MainController.js"></script>
+    <script type="text/javascript" src="services/IOUFacade.js"></script>
 </body>
 </html>
