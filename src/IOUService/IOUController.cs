@@ -29,7 +29,13 @@ namespace IOUService
         [HttpGet]
         public List<string> GetNotesSentByMe()
         {
-            return notes[GetCurrentUserName()];
+            string me = GetCurrentUserName();
+            if (notes.ContainsKey(me))
+            {
+                return notes[me];
+            }
+
+            return new List<string>();
         }
 
         //public List<string> GetMyNotes()
