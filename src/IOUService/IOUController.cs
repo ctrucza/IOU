@@ -1,16 +1,22 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 namespace IOUService
 {
     public class IOUController : ApiController
     {
-        private static Dictionary<string, List<string>> notes = new Dictionary<string, List<string>>();
- 
+        private static readonly List<Note> Notes = new List<Note>();
+
+        private readonly string me;
+
+        public IOUController()
+        {
+            me = GetCurrentUserName();
+        }
+
         public string GetCurrentUserName()
         {
-            Console.WriteLine(User.Identity.Name);
             return User.Identity.Name;
         }
 
@@ -18,23 +24,36 @@ namespace IOUService
         [HttpGet]
         public void SendThankYouNoteTo(string recipient)
         {
-            string me = GetCurrentUserName();
-            if (!notes.ContainsKey(me))
-            {
-                notes.Add(me, new List<string>());
-            }
-            notes[me].Add(recipient);
+            Notes.Add(new Note(me, recipient));
         }
 
         [HttpGet]
-        public List<string> GetNotesSentByMe()
+        public IEnumerable<string> GetNotesSentByMe()
         {
-            return notes[GetCurrentUserName()];
+            return Notes.Where(note => note.Sender == me).Select(note => note.ToString());
         }
 
-        //public List<string> GetMyNotes()
-        //{
-        //    return something;
-        //}
+        public IEnumerable<string> GetMyNotes()
+        {
+            return Notes.Where(note => note.Recipient == me).Select(note => note.ToString());
+        }
+    }
+
+    public class Note
+    {
+        public Note(string sender, string recipient)
+        {
+            Sender = sender;
+            Recipient = recipient;
+        }
+
+        public string Sender { get; private set; }
+
+        public string Recipient { get; private set; }
+
+        public override string ToString()
+        {
+            return string.Format("Thank you, {0}! Sincerely, {1}", Recipient, Sender);
+        }
     }
 }
