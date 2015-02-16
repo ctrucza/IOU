@@ -28,8 +28,15 @@
             <h3>Notes sent by me</h3>
             <div>
                 <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Recipient</th>
+                            <th>Text</th>
+                        </tr>
+                    </thead>
                     <tr ng-repeat="note in sentNotes track by $index">
-                        <td>{{ note }}</td>
+                        <td>{{ note.Recipient }}</td>
+                        <td>{{ note.Text }}</td>
                     </tr>
                 </table>
             </div>
