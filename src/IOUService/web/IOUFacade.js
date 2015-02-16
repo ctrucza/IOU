@@ -15,6 +15,12 @@
         sendThankYouNoteTo: function (recipient) {
             var params = { recipient: recipient };
             return $http.get("/api/iou/SendThankYouNoteTo", { params: params });
+        },
+
+        getMyNotes : function() {
+            return $http.get("/api/iou/GetMyNotes").then(function(response) {
+                return response.data;
+            });
         }
     };
 });

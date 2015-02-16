@@ -2,9 +2,11 @@
 
     $scope.username = "...";
     $scope.sentNotes = [];
+    $scope.receivedNotes = [];
 
     refreshUsername();
-    refreshNotes();
+    refreshSentNotes();
+    refreshReceivedNotes();
 
     function refreshUsername() {
         IOUFacade.getUsername().then(function (username) {
@@ -12,7 +14,7 @@
         });
     }
     
-    function refreshNotes() {
+    function refreshSentNotes() {
         IOUFacade.getNotesSentByMe().then(function (notes) {
             $scope.sentNotes = notes;
         });
@@ -20,10 +22,18 @@
 
     $scope.thankYou = function () {
         var recipient = $scope.recipient;
-        IOUFacade.sendThankYouNoteTo(recipient).then(refreshNotes).then(clearRecipient);
+        IOUFacade.sendThankYouNoteTo(recipient).then(refreshSentNotes).then(clearRecipient);
     };
 
     function clearRecipient() {
         $scope.recipient = null;
+    }
+
+    $scope.refreshReceivedNotes = refreshReceivedNotes;
+
+    function refreshReceivedNotes() {
+        IOUFacade.getMyNotes().then(function (notes) {
+            $scope.receivedNotes = notes;
+        });
     }
 });

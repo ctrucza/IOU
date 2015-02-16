@@ -40,6 +40,25 @@
                     </tr>
                 </table>
             </div>
+            
+            <h3>Notes sent to me</h3>
+            <button type="button" class="btn btn-primary" ng-click="refreshReceivedNotes()">
+                Refresh
+            </button>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sender</th>
+                            <th>Text</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="note in receivedNotes track by $index">
+                        <td>{{ note.Sender }}</td>
+                        <td>{{ note.Text }}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
