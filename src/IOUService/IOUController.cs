@@ -1,16 +1,22 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 namespace IOUService
 {
     public class IOUController : ApiController
     {
-        private static Dictionary<string, List<string>> notes = new Dictionary<string, List<string>>();
- 
+        private static readonly List<Note> Notes = new List<Note>();
+
+        private readonly string me;
+
+        public IOUController()
+        {
+            me = GetCurrentUserName();
+        }
+
         public string GetCurrentUserName()
         {
-            Console.WriteLine(User.Identity.Name);
             return User.Identity.Name;
         }
 
@@ -18,23 +24,18 @@ namespace IOUService
         [HttpGet]
         public void SendThankYouNoteTo(string recipient)
         {
-            string me = GetCurrentUserName();
-            if (!notes.ContainsKey(me))
-            {
-                notes.Add(me, new List<string>());
-            }
-            notes[me].Add(recipient);
+            Notes.Add(new Note(me, recipient));
         }
 
         [HttpGet]
-        public List<string> GetNotesSentByMe()
+        public IEnumerable<Note> GetNotesSentByMe()
         {
-            return notes[GetCurrentUserName()];
+            return Notes.Where(note => note.Sender == me);
         }
 
-        //public List<string> GetMyNotes()
-        //{
-        //    return something;
-        //}
-    }
+        public IEnumerable<Note> GetMyNotes()
+        {
+            return Notes.Where(note => note.Recipient == me);
+        }
+    } 
 }
