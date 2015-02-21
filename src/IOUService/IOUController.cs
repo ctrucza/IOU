@@ -21,7 +21,7 @@ namespace IOUService
         }
 
         [HttpPost]
-        public void SendThankYouNoteTo(Note note)
+        public void SendThankYouNote(Note note)
         {
             Notes.Add(note);
         }

@@ -22,7 +22,7 @@
 
     $scope.thankYou = function () {
         var recipient = $scope.recipient;
-        IOUFacade.sendThankYouNoteTo(recipient).then(refreshSentNotes).then(clearRecipient);
+        IOUFacade.sendThankYouNote(recipient).then(refreshSentNotes).then(clearRecipient);
     };
 
     function clearRecipient() {
