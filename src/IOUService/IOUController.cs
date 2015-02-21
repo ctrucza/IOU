@@ -23,6 +23,7 @@ namespace IOUService
         [HttpPost]
         public void SendThankYouNote(Note note)
         {
+            note.Sender = me;
             Notes.Add(note);
         }
 
