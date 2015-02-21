@@ -13,8 +13,8 @@
         },
 
         sendThankYouNoteTo: function (recipient) {
-            var params = { recipient: recipient };
-            return $http.get("/api/iou/SendThankYouNoteTo", { params: params });
+            var data = { recipient: recipient };
+            return $http.post("/api/iou/SendThankYouNoteTo", data);
         },
 
         getMyNotes : function() {
