@@ -12,9 +12,9 @@
             });
         },
 
-        sendThankYouNoteTo: function (recipient) {
-            var params = { recipient: recipient };
-            return $http.get("/api/iou/SendThankYouNoteTo", { params: params });
+        sendThankYouNote: function (recipient) {
+            var data = { recipient: recipient };
+            return $http.post("/api/iou/SendThankYouNote", data);
         },
 
         getMyNotes : function() {

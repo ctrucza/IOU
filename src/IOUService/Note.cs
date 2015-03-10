@@ -6,13 +6,18 @@
         {
             Sender = sender;
             Recipient = recipient;
-            Text = string.Format("Thank you, {0}! Sincerely, {1}", Recipient, Sender);
         }
 
-        public string Sender { get; private set; }
+        public string Sender { get; set; }
 
         public string Recipient { get; private set; }
 
-        public string Text { get; private set; }
+        public string Text
+        {
+            get
+            {
+                return string.Format("Thank you, {0}! Sincerely, {1}", Recipient, Sender);
+            }
+        }
     }
 }

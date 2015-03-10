@@ -20,11 +20,11 @@ namespace IOUService
             return User.Identity.Name;
         }
 
-        // This being a Get is very baaad
-        [HttpGet]
-        public void SendThankYouNoteTo(string recipient)
+        [HttpPost]
+        public void SendThankYouNote(Note note)
         {
-            Notes.Add(new Note(me, recipient));
+            note.Sender = me;
+            Notes.Add(note);
         }
 
         [HttpGet]
