@@ -40,21 +40,19 @@
             </div>
             
             <h3>Notes sent to me</h3>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" id="refresh_button">
                 Refresh
             </button>
             <div>
-                <table class="table">
+                <table class="table" id="received_notes_table">
                     <thead>
                         <tr>
                             <th>Sender</th>
                             <th>Text</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td>note.Sender</td>
-                        <td>note.Text</td>
-                    </tr>
+
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
