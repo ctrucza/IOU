@@ -43,10 +43,10 @@ var view = {
         $("#username").text(user_name);
     },
     show_sent_notes: function(notes) {
-        show_sent_notes(notes);
+        display_notes_table("sent_notes_table", notes);
     },
     show_received_notes: function(notes) {
-        show_received_notes(notes);
+        display_notes_table("received_notes_table", notes);
     }
 };
 
@@ -65,14 +65,6 @@ function set_up_send_button() {
 
 function set_up_refresh_button() {
     $("#refresh_button").click(api.load_received_notes);
-}
-
-function show_sent_notes(notes) {
-    display_notes_table("sent_notes_table", notes);
-}
-
-function show_received_notes(notes) {
-    display_notes_table("received_notes_table", notes);
 }
 
 function display_notes_table(table_id, notes) {
