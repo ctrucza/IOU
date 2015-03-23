@@ -12,7 +12,13 @@
         load_sent_notes();
     },
     load_received_notes: function() {
-        load_received_notes();
+        $.ajax({
+            url: "/api/IOU/GetMyNotes",
+            type: "GET",
+            success: function (result) {
+                show_received_notes(result);
+            }
+        });
     },
     send_note: function() {
         $.ajax({
@@ -49,16 +55,6 @@ function load_sent_notes() {
         type: "GET",
         success: function (result) {
             show_sent_notes(result);
-        }
-    });
-}
-
-function load_received_notes() {
-    $.ajax({
-        url: "/api/IOU/GetMyNotes",
-        type: "GET",
-        success: function (result) {
-            show_received_notes(result);
         }
     });
 }
