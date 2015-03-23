@@ -67,9 +67,9 @@ function show_received_notes(notes) {
 }
 
 function display_notes_table(table_id, notes) {
-    clear_table(table_id);
-
     var table = document.getElementById(table_id);
+    clear_table(table);
+
     $.each(notes, function (index, value) {
         var row = table.insertRow(-1);
         var recipientCell = row.insertCell(-1);
@@ -79,6 +79,6 @@ function display_notes_table(table_id, notes) {
     });
 }
 
-function clear_table(table_id) {
-    $("#" + table_id + " tr").not(":first").remove();
+function clear_table(table) {
+    $(table).find("tr").not(":first").remove();
 }
