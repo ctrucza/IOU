@@ -13,7 +13,7 @@
             url: "/api/IOU/GetNotesSentByMe",
             type: "GET",
             success: function (result) {
-                show_sent_notes(result);
+                view.show_sent_notes(result);
             }
         });
     },
@@ -41,6 +41,9 @@
 var view = {
     show_user_name: function(user_name) {
         $("#username").text(user_name);
+    },
+    show_sent_notes: function(notes) {
+        show_sent_notes(notes);
     }
 };
 
