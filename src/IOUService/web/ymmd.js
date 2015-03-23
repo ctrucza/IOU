@@ -22,7 +22,7 @@
             url: "/api/IOU/GetMyNotes",
             type: "GET",
             success: function (result) {
-                show_received_notes(result);
+                view.show_received_notes(result);
             }
         });
     },
@@ -44,6 +44,9 @@ var view = {
     },
     show_sent_notes: function(notes) {
         show_sent_notes(notes);
+    },
+    show_received_notes: function(notes) {
+        show_received_notes(notes);
     }
 };
 
