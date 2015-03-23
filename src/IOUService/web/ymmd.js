@@ -2,9 +2,7 @@
     set_up_send_button();
     set_up_refresh_button();
 
-    api.on_current_user_loaded = view.show_current_user;
-    api.on_sent_notes_loaded = view.show_sent_notes;
-    api.on_received_notes_loaded = view.show_received_notes;
+    view.set_delegate(api);
 
     api.load_current_user();
     api.load_sent_notes();
