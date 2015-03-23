@@ -9,7 +9,13 @@
         });
     },
     load_sent_notes: function() {
-        load_sent_notes();
+        $.ajax({
+            url: "/api/IOU/GetNotesSentByMe",
+            type: "GET",
+            success: function (result) {
+                show_sent_notes(result);
+            }
+        });
     },
     load_received_notes: function() {
         $.ajax({
@@ -26,7 +32,7 @@
             type: "GET",
             data: { recipient: $("#recipient").val() },
             success: function (result) {
-                load_sent_notes();
+                api.load_sent_notes();
             }
         });
     }
@@ -47,16 +53,6 @@ function set_up_send_button() {
 
 function set_up_refresh_button() {
     $("#refresh_button").click(api.load_received_notes);
-}
-
-function load_sent_notes() {
-    $.ajax({
-        url: "/api/IOU/GetNotesSentByMe",
-        type: "GET",
-        success: function (result) {
-            show_sent_notes(result);
-        }
-    });
 }
 
 function show_sent_notes(notes) {
