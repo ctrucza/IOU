@@ -56,7 +56,6 @@ function set_up_refresh_button() {
 }
 
 function show_sent_notes(notes) {
-
     display_notes_table("sent_notes_table", notes);
 }
 
