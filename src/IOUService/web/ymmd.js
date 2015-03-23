@@ -9,7 +9,14 @@
         load_received_notes();
     },
     send_note: function() {
-        send_note();
+        $.ajax({
+            url: "/api/IOU/SendThankYouNoteTo",
+            type: "GET",
+            data: { recipient: $("#recipient").val() },
+            success: function (result) {
+                load_sent_notes();
+            }
+        });
     }
 };
 
@@ -29,17 +36,6 @@ function set_up_send_button() {
 function set_up_refresh_button() {
     $("#refresh_button").click(function () {
         load_received_notes();
-    });
-}
-
-function send_note() {
-    $.ajax({
-        url: "/api/IOU/SendThankYouNoteTo",
-        type: "GET",
-        data: { recipient: $("#recipient").val() },
-        success: function (result) {
-            load_sent_notes();
-        }
     });
 }
 
