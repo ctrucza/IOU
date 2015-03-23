@@ -20,21 +20,23 @@ window.onload = function () {
 }
 
 function set_up_send_button() {
-    $("#thank_you_button").click(function () {
-        $.ajax({
-            url: "/api/IOU/SendThankYouNoteTo",
-            type: "GET",
-            data: { recipient: $("#recipient").val() },
-            success: function (result) {
-                load_sent_notes();
-            }
-        });
-    });
+    $("#thank_you_button").click(send_note);
 }
 
 function set_up_refresh_button() {
     $("#refresh_button").click(function () {
         load_received_notes();
+    });
+}
+
+function send_note(recipient) {
+    $.ajax({
+        url: "/api/IOU/SendThankYouNoteTo",
+        type: "GET",
+        data: { recipient: $("#recipient").val() },
+        success: function (result) {
+            load_sent_notes();
+        }
     });
 }
 
