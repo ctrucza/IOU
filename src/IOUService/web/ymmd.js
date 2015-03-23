@@ -1,6 +1,12 @@
 ﻿var api = {
     load_current_user: function() {
-        load_current_user();
+        $.ajax({
+            url: "/api/IOU/GetCurrentUserName",
+            type: "GET",
+            success: function (result) {
+                $("#username").text(result);
+            }
+        });
     },
     load_sent_notes: function() {
         load_sent_notes();
@@ -35,16 +41,6 @@ function set_up_send_button() {
 
 function set_up_refresh_button() {
     $("#refresh_button").click(api.load_received_notes);
-}
-
-function load_current_user() {
-    $.ajax({
-        url: "/api/IOU/GetCurrentUserName",
-        type: "GET",
-        success: function (result) {
-            $("#username").text(result);
-        }
-    });
 }
 
 function load_sent_notes() {
