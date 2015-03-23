@@ -39,7 +39,7 @@
 };
 
 var view = {
-    show_user_name: function(user_name) {
+    show_current_user: function(user_name) {
         $("#username").text(user_name);
     },
     show_sent_notes: function(notes) {
@@ -54,7 +54,7 @@ window.onload = function () {
     set_up_send_button();
     set_up_refresh_button();
 
-    api.load_current_user(view.show_user_name);
+    api.load_current_user(view.show_current_user);
     api.load_sent_notes();
     api.load_received_notes();
 }
