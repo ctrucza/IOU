@@ -34,9 +34,7 @@ function set_up_send_button() {
 }
 
 function set_up_refresh_button() {
-    $("#refresh_button").click(function () {
-        load_received_notes();
-    });
+    $("#refresh_button").click(api.load_received_notes);
 }
 
 function load_current_user() {
