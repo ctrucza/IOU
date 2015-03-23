@@ -1,4 +1,16 @@
-﻿window.onload = function () {
+﻿var api = {
+    load_current_user: function() {
+        load_current_user();
+    },
+    load_sent_notes: function() {
+        load_sent_notes();
+    },
+    load_received_notes: function() {
+        load_received_notes();
+    }
+};
+
+window.onload = function () {
     set_up_send_button();
     set_up_refresh_button();
 
