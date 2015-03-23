@@ -1,10 +1,10 @@
 ﻿var api = {
-    load_current_user: function() {
+    load_current_user: function(callback) {
         $.ajax({
             url: "/api/IOU/GetCurrentUserName",
             type: "GET",
             success: function (result) {
-                view.show_user_name(result);
+                callback(result);
             }
         });
     },
@@ -54,7 +54,7 @@ window.onload = function () {
     set_up_send_button();
     set_up_refresh_button();
 
-    api.load_current_user();
+    api.load_current_user(view.show_user_name);
     api.load_sent_notes();
     api.load_received_notes();
 }
