@@ -4,7 +4,7 @@
             url: "/api/IOU/GetCurrentUserName",
             type: "GET",
             success: function (result) {
-                $("#username").text(result);
+                view.show_user_name(result);
             }
         });
     },
@@ -35,6 +35,12 @@
                 api.load_sent_notes();
             }
         });
+    }
+};
+
+var view = {
+    show_user_name: function(user_name) {
+        $("#username").text(user_name);
     }
 };
 
