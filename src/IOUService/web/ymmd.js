@@ -14,10 +14,9 @@ window.onload = function () {
     set_up_send_button();
     set_up_refresh_button();
 
-    load_current_user();
-
-    load_sent_notes();
-    load_received_notes();
+    api.load_current_user();
+    api.load_sent_notes();
+    api.load_received_notes();
 }
 
 function set_up_send_button() {
