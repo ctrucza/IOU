@@ -7,6 +7,9 @@
     },
     load_received_notes: function() {
         load_received_notes();
+    },
+    send_note: function() {
+        send_note();
     }
 };
 
@@ -20,7 +23,7 @@ window.onload = function () {
 }
 
 function set_up_send_button() {
-    $("#thank_you_button").click(send_note);
+    $("#thank_you_button").click(api.send_note);
 }
 
 function set_up_refresh_button() {
@@ -29,7 +32,7 @@ function set_up_refresh_button() {
     });
 }
 
-function send_note(recipient) {
+function send_note() {
     $.ajax({
         url: "/api/IOU/SendThankYouNoteTo",
         type: "GET",
