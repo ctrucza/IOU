@@ -10,10 +10,9 @@ casper.test.begin("current user shown correctly", 2, function(test) {
             test.done();
     });
 });
-var count_before;
-
 
 casper.test.begin("new message appears in the sent messages list", 3, function (test) {
+    var count_before;
     casper.start(URL).
         then(function () {
             this.sendKeys("#recipient", "Jane Doe");
