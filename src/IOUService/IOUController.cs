@@ -17,7 +17,8 @@ namespace IOUService
 
         public string GetCurrentUserName()
         {
-            return User.Identity.Name;
+            return "John Doe";
+            //return User.Identity.Name;
         }
 
         // This being a Get is very baaad
