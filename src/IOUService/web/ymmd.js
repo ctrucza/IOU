@@ -58,12 +58,15 @@ function load_received_notes() {
 }
 
 function show_sent_notes(notes) {
-
     display_notes_table("sent_notes_table", notes);
 }
 
 function show_received_notes(notes) {
-    display_notes_table("received_notes_table", notes);
+    var hacked = notes.map(function(note) {
+        return { Recipient: note.Sender, Text: note.Text };
+    });
+
+    display_notes_table("received_notes_table", hacked);
 }
 
 function display_notes_table(table_id, notes) {
