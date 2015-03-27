@@ -11,6 +11,19 @@ casper.test.begin("current user shown correctly", 2, function(test) {
     });
 });
 
+function get_number_of_rows(table_selector) {
+    var result = casper.evaluate(function (selector) {
+        return $(selector).find("tr").length;
+    }, table_selector);
+    return result;
+}
+
+function get_cell_from_last_row(table_selector, cell_index) {
+    return casper.evaluate(function(selector, index) {
+        return $(selector).find("tr").last().find("td")[index].innerHTML;
+    }, table_selector, cell_index);
+}
+
 casper.test.begin("new message appears in the sent messages list", 6, function (test) {
     var initial_sent_notes_count;
     var initial_received_notes_count;
@@ -20,62 +33,42 @@ casper.test.begin("new message appears in the sent messages list", 6, function (
     casper.then(function() {
         this.sendKeys("#recipient", "Jane Doe");
 
-        // count the rows in the sent notes table
-        initial_sent_notes_count = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='sent_notes_table']//tr");
-        }).length;
-
-        // count the rows in the received notes table
-        initial_received_notes_count = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='received_notes_table']//tr");
-        }).length;
+        initial_sent_notes_count = get_number_of_rows("#sent_notes_table");
+        initial_received_notes_count = get_number_of_rows("#received_notes_table");
 
         // send note
         this.click("#thank_you_button");
     });
 
-    casper.wait(1000);
+    casper.wait(100);
 
     casper.then(function() {
-        // count the rows in the sent notes table
-        var count_after = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='sent_notes_table']//tr");
-        }).length;
+        var count_after = get_number_of_rows("#sent_notes_table");
         test.assertEquals(count_after, initial_sent_notes_count + 1);
 
-        var recipient = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='sent_notes_table']//tr[last()]//td[1]");
-        })[0];
-        test.assertEquals(recipient.innerHTML, "Jane Doe");
+        var recipient = get_cell_from_last_row("#sent_notes_table", 0);
+        test.assertEquals(recipient, "Jane Doe");
 
-        var message = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='sent_notes_table']//tr[last()]//td[2]");
-        })[0];
-        test.assertEquals(message.innerHTML, "Thank you, Jane Doe! Sincerely, John Doe");
+        var message = get_cell_from_last_row("#sent_notes_table", 1);
+        test.assertEquals(message, "Thank you, Jane Doe! Sincerely, John Doe");
     });
 
     casper.then(function() {
         this.click("#refresh_button");
     });
 
-    casper.wait(1000);
+    casper.wait(100);
 
     casper.then(function (){
         // count the rows in the received notes table
-        var count_after = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='received_notes_table']//tr");
-        }).length;
+        var count_after = get_number_of_rows("#received_notes_table");
         test.assertEquals(count_after, initial_received_notes_count + 1);
 
-        var sender = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='received_notes_table']//tr[last()]//td[1]");
-        })[0];
-        test.assertEquals(sender.innerHTML, "Jane Doe");
+        var sender = get_cell_from_last_row("#received_notes_table", 0);
+        test.assertEquals(sender, "Jane Doe");
 
-        var message = this.evaluate(function() {
-            return __utils__.getElementsByXPath("//table[@id='received_notes_table']//tr[last()]//td[2]");
-        })[0];
-        test.assertEquals(message.innerHTML, "Thank you, John Doe! Sincerely, Jane Doe");
+        var message = get_cell_from_last_row("#received_notes_table", 1);
+        test.assertEquals(message, "Thank you, John Doe! Sincerely, Jane Doe");
     });
     casper.run(function () {
         test.done();
