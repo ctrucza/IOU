@@ -12,7 +12,7 @@ namespace IOUService
     {
         public void Configuration(IAppBuilder appBuilder)
         {
-            SetUpAuth(appBuilder);
+            //SetUpAuth(appBuilder);
             SetUpApi(appBuilder);
             SetUpUi(appBuilder);
         }
