@@ -6,6 +6,7 @@
         view.display_notes_table("sent_notes_table", notes);
     },
     show_received_notes: function (notes) {
+        // this hack should be fixed
         var hacked = notes.map(function (note) {
             return { Recipient: note.Sender, Text: note.Text };
         });
@@ -16,6 +17,7 @@
         return $("#recipient").val();
     },
 
+    // the code below is too complex.
     display_notes_table: function (table_id, notes) {
         var table = document.getElementById(table_id);
         view.clear_table(table);

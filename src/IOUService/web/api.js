@@ -4,6 +4,9 @@
     on_sent_notes_loaded: undefined,
     on_received_notes_loaded: undefined,
 
+    // smell: duplicate code
+    // the four methods there look very similar to each other.
+    // ExtractSomething?
     load_current_user: function () {
         $.ajax({
             url: "/api/IOU/GetCurrentUserName",
