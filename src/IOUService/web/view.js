@@ -2,10 +2,7 @@
     send_button: $("#thank_you_button"),
     refresh_button: $("#refresh_button"),
     recipient_edit: $("#recipient"),
-
-    show_current_user_name: function (username) {
-        $("#username").text(username);
-    },
+    current_username_label: $("#username"),
     show_sent_notes: function (notes) {
         view.display_notes_table("sent_notes_table", notes);
     },
