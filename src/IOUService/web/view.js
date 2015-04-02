@@ -1,4 +1,6 @@
 ﻿var view = {
+    send_button: $("#thank_you_button"),
+
     show_current_user_name: function (username) {
         $("#username").text(username);
     },

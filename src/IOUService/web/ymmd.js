@@ -12,7 +12,7 @@
 }
 
 function set_up_send_button() {
-    $("#thank_you_button").click(function () {
+    view.send_button.click(function () {
         api.send_note(view.get_recipient());
     });
 }
