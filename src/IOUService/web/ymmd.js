@@ -1,5 +1,8 @@
 ﻿window.onload = function () {
-    set_up_send_button();
+    view.get_send_button().click(function () {
+        api.send_note(view.get_recipient());
+    });
+
     set_up_refresh_button();
 
     api.on_current_user_loaded = view.show_current_user_name;
@@ -11,12 +14,6 @@
     api.load_current_user();
     api.load_sent_notes();
     api.load_received_notes();
-}
-
-function set_up_send_button() {
-    view.get_send_button().click(function () {
-        api.send_note(view.get_recipient());
-    });
 }
 
 function set_up_refresh_button() {
