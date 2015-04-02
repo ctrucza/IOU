@@ -13,7 +13,7 @@
 
 function set_up_send_button() {
     view.send_button.click(function () {
-        api.send_note(view.get_recipient());
+        api.send_note(view.recipient_edit.val());
     });
 }
 

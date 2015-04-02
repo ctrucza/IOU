@@ -1,6 +1,7 @@
 ﻿var view = {
     send_button: $("#thank_you_button"),
     refresh_button: $("#refresh_button"),
+    recipient_edit: $("#recipient"),
 
     show_current_user_name: function (username) {
         $("#username").text(username);
@@ -15,10 +16,6 @@
 
         view.display_notes_table("received_notes_table", hacked);
     },
-    get_recipient: function () {
-        return $("#recipient").val();
-    },
-
     display_notes_table: function (table_id, notes) {
         var table = document.getElementById(table_id);
         view.clear_table(table);
