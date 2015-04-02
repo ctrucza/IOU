@@ -13,11 +13,8 @@
     api.load_received_notes();
 }
 
-function get_send_button() {
-    return $("#thank_you_button");
-}
 function set_up_send_button() {
-    var button = get_send_button();
+    var button = view.get_send_button();
     button.click(function () {
         api.send_note(view.get_recipient());
     });

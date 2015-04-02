@@ -16,6 +16,9 @@
     get_recipient: function () {
         return $("#recipient").val();
     },
+    get_send_button: function () {
+        return $("#thank_you_button");
+    },
 
     // the code below is too complex.
     display_notes_table: function (table_id, notes) {
