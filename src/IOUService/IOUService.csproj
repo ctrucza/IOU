@@ -93,6 +93,9 @@
     <Content Include="web\api.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="web\controller.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="web\integration_tests.js" />
     <Content Include="web\scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="web\scripts\jquery-2.1.3.js">
