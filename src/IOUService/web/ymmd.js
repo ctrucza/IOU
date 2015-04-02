@@ -14,8 +14,8 @@
 }
 
 function set_up_send_button() {
-    // Why do we have view things here?
-    $("#thank_you_button").click(function () {
+    var button = $("#thank_you_button");
+    button.click(function () {
         api.send_note(view.get_recipient());
     });
 }
