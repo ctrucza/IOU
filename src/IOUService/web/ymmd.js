@@ -1,4 +1,6 @@
 ﻿window.onload = function () {
+
+    // wow! such complex!
     view.get_send_button().click(function () {
         api.send_note(view.get_recipient());
     });
