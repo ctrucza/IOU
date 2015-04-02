@@ -7,7 +7,7 @@
 function setup_view() {
     // wow! such complex!
     view.get_send_button().click(function () {
-        api.send_note(view.get_recipient());
+        api.send_note(view.recipient_label.val());
     });
 
     view.get_refresh_button().click(function () {

@@ -13,9 +13,7 @@
 
         view.display_notes_table("received_notes_table", hacked);
     },
-    get_recipient: function () {
-        return $("#recipient").val();
-    },
+    recipient_label: $("#recipient"),
     get_send_button: function () {
         return $("#thank_you_button");
     },
