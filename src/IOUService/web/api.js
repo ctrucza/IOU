@@ -1,15 +1,13 @@
 ﻿var api = {
     // interface
-    on_current_user_loaded: undefined,
-    on_sent_notes_loaded: undefined,
-    on_received_notes_loaded: undefined,
-
+    delegate: undefined,
+    
     load_current_user: function () {
         $.ajax({
             url: "/api/IOU/GetCurrentUserName",
             type: "GET",
             success: function (result) {
-                api.on_current_user_loaded(result);
+                api.delegate.on_current_user_loaded(result);
             }
         });
     },
@@ -18,7 +16,7 @@
             url: "/api/IOU/GetNotesSentByMe",
             type: "GET",
             success: function (result) {
-                api.on_sent_notes_loaded(result);
+                api.delegate.on_sent_notes_loaded(result);
             }
         });
     },
@@ -27,7 +25,7 @@
             url: "/api/IOU/GetMyNotes",
             type: "GET",
             success: function (result) {
-                api.on_received_notes_loaded(result);
+                api.delegate.on_received_notes_loaded(result);
             }
         });
     },
@@ -37,7 +35,7 @@
             type: "GET",
             data: { recipient: recipient },
             success: function () {
-                api.load_sent_notes();
+                api.delegate.on_note_sent();
             }
         });
     }

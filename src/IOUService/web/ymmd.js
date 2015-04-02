@@ -14,9 +14,7 @@ function setup_view() {
 }
 
 function setup_api() {
-    api.on_current_user_loaded = show_current_user_name;
-    api.on_sent_notes_loaded = show_sent_notes;
-    api.on_received_notes_loaded = show_received_notes;
+    api.delegate = delegate;
 }
 
 function refresh_view() {
@@ -25,14 +23,17 @@ function refresh_view() {
     api.load_received_notes();
 }
 
-function show_current_user_name(current_user_name) {
-    view.current_username_label.text(current_user_name);
-}
-
-function show_sent_notes(notes) {
-    view.show_sent_notes(notes);
-}
-
-function show_received_notes(notes) {
-    view.show_received_notes(notes);
+var delegate = {
+    on_current_user_loaded: function (current_user_name) {
+        view.current_username_label.text(current_user_name);
+    },
+    on_sent_notes_loaded: function (notes) {
+        view.show_sent_notes(notes);
+    },
+    on_received_notes_loaded: function (notes) {
+        view.show_received_notes(notes);
+    },
+    on_note_sent: function() {
+        api.load_sent_notes();
+    }
 }
