@@ -10,7 +10,7 @@ function setup_view() {
         api.send_note(view.recipient_label.val());
     });
 
-    view.get_refresh_button().click(function () {
+    view.refresh_button.click(function () {
         api.load_received_notes();
     });
 }

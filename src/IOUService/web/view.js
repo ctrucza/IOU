@@ -15,9 +15,7 @@
     },
     recipient_label: $("#recipient"),
     send_button: $("#thank_you_button"),
-    get_refresh_button: function () {
-        return $("#refresh_button");
-    },
+    refresh_button: $("#refresh_button"),
 
     // the code below is too complex.
     display_notes_table: function (table_id, notes) {
