@@ -1,8 +1,6 @@
 ﻿var api = {
     // interface
     delegate: undefined,
-    on_sent_notes_loaded: undefined,
-    on_received_notes_loaded: undefined,
 
     // smell: duplicate code
     // the four methods there look very similar to each other.
@@ -21,7 +19,7 @@
             url: "/api/IOU/GetNotesSentByMe",
             type: "GET",
             success: function (result) {
-                api.on_sent_notes_loaded(result);
+                api.delegate.on_sent_notes_loaded(result);
             }
         });
     },
@@ -30,7 +28,7 @@
             url: "/api/IOU/GetMyNotes",
             type: "GET",
             success: function (result) {
-                api.on_received_notes_loaded(result);
+                api.delegate.on_received_notes_loaded(result);
             }
         });
     },
