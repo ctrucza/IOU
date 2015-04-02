@@ -1,6 +1,6 @@
 ﻿var api = {
     // interface
-    on_current_user_loaded: undefined,
+    delegate: undefined,
     on_sent_notes_loaded: undefined,
     on_received_notes_loaded: undefined,
 
@@ -12,7 +12,7 @@
             url: "/api/IOU/GetCurrentUserName",
             type: "GET",
             success: function (result) {
-                api.on_current_user_loaded(result);
+                api.delegate.on_current_user_loaded(result);
             }
         });
     },

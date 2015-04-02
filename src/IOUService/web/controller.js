@@ -19,7 +19,7 @@
         });
     },
     setup_api: function () {
-        controller.api.on_current_user_loaded = controller.show_current_user_name;
+        controller.api.delegate = controller;
         controller.api.on_sent_notes_loaded = controller.show_sent_notes;
         controller.api.on_received_notes_loaded = controller.show_received_notes;
     },
@@ -36,13 +36,13 @@
     load_received_notes: function() {
         controller.api.load_received_notes();
     },
-    show_current_user_name: function(current_user_name) {
-        controller.view.show_current_user_name(current_user_name);
-    },
     show_sent_notes: function(notes) {
         controller.view.show_sent_notes(notes);
     },
     show_received_notes: function(notes) {
         controller.view.show_received_notes(notes);
-    }
+    },
+    on_current_user_loaded: function(current_user_name) {
+        controller.view.show_current_user_name(current_user_name);
+    },
 }
