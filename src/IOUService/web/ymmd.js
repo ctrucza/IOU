@@ -6,7 +6,7 @@
 
 function setup_view() {
     // wow! such complex!
-    view.get_send_button().click(function () {
+    view.send_button.click(function () {
         api.send_note(view.recipient_label.val());
     });
 

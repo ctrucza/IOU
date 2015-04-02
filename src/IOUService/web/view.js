@@ -14,9 +14,7 @@
         view.display_notes_table("received_notes_table", hacked);
     },
     recipient_label: $("#recipient"),
-    get_send_button: function () {
-        return $("#thank_you_button");
-    },
+    send_button: $("#thank_you_button"),
     get_refresh_button: function () {
         return $("#refresh_button");
     },
