@@ -14,8 +14,7 @@
 }
 
 function set_up_send_button() {
-    var button = view.get_send_button();
-    button.click(function () {
+    view.get_send_button().click(function () {
         api.send_note(view.get_recipient());
     });
 }
