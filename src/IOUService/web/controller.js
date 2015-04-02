@@ -42,5 +42,7 @@
     },
     on_received_notes_loaded: function(notes) {
         controller.view.show_received_notes(notes);
+    },
+        controller.api.load_sent_notes();
     }
 }

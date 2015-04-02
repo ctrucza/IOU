@@ -38,7 +38,7 @@
             type: "GET",
             data: { recipient: recipient },
             success: function () {
-                api.load_sent_notes();
+                api.delegate.on_note_sent();
             }
         });
     }
