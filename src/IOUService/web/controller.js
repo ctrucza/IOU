@@ -1,6 +1,8 @@
 ﻿var controller = {
     view: undefined,
     api: undefined,
+
+    username_label: undefined,
     setup: function (view, api) {
         controller.view = view;
         controller.api = api;
@@ -17,6 +19,8 @@
         controller.view.refresh_button.click(function () {
             controller.load_received_notes();
         });
+
+        controller.username_label = view.username_label;
     },
     setup_api: function () {
         controller.api.delegate = controller;
@@ -38,7 +42,7 @@
 
     // api delegate functions
     on_current_user_loaded: function (current_user_name) {
-        controller.view.username_label.text(current_user_name);
+        controller.username_label.text(current_user_name);
     },
     on_sent_notes_loaded: function(notes) {
         controller.view.show_sent_notes(notes);
