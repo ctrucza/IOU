@@ -1,7 +1,5 @@
 ﻿var view = {
-    show_current_user_name: function (username) {
-        $("#username").text(username);
-    },
+    username_label: $("#username"),
     show_sent_notes: function (notes) {
         view.display_notes_table("sent_notes_table", notes);
     },

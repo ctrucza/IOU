@@ -28,14 +28,17 @@
         controller.api.load_sent_notes();
         controller.api.load_received_notes();
     },
+    // private actions
     send_note: function() {
         controller.api.send_note(controller.view.recipient_label.val());
     },
     load_received_notes: function() {
         controller.api.load_received_notes();
     },
-    on_current_user_loaded: function(current_user_name) {
-        controller.view.show_current_user_name(current_user_name);
+
+    // api delegate functions
+    on_current_user_loaded: function (current_user_name) {
+        controller.view.username_label.text(current_user_name);
     },
     on_sent_notes_loaded: function(notes) {
         controller.view.show_sent_notes(notes);
@@ -43,6 +46,7 @@
     on_received_notes_loaded: function(notes) {
         controller.view.show_received_notes(notes);
     },
+    on_note_sent: function() {
         controller.api.load_sent_notes();
     }
 }
