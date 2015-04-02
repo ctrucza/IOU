@@ -11,11 +11,11 @@
     setup_view: function () {
         // wow! such complex!
         controller.view.send_button.click(function () {
-            controller.api.send_note(controller.view.recipient_label.val());
+            controller.send_note();
         });
 
         controller.view.refresh_button.click(function () {
-            controller.api.load_received_notes();
+            controller.load_received_notes();
         });
     },
     setup_api: function () {
@@ -28,6 +28,12 @@
         // but that would create ugliness there. Maybe we miss something?
         controller.api.load_current_user();
         controller.api.load_sent_notes();
+        controller.api.load_received_notes();
+    },
+    send_note: function() {
+        controller.api.send_note(controller.view.recipient_label.val());
+    },
+    load_received_notes: function() {
         controller.api.load_received_notes();
     }
 }
