@@ -18,7 +18,7 @@ function set_up_send_button() {
 }
 
 function set_up_refresh_button() {
-    $("#refresh_button").click(function () {
+    view.refresh_button.click(function () {
         api.load_received_notes();
     });
 }
