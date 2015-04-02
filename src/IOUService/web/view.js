@@ -19,6 +19,9 @@
     get_send_button: function () {
         return $("#thank_you_button");
     },
+    get_refresh_button: function () {
+        return $("#refresh_button");
+    },
 
     // the code below is too complex.
     display_notes_table: function (table_id, notes) {
