@@ -1,8 +1,8 @@
-var URL = "http://localhost:4242/web/index.html";
+//var URL = "http://localhost:4242/web/index.html";
 
 // when using fake api, we can load the file directly without build/restart of the web service
 // the wait calls in the tests are not necessary in this case.
-//var URL = "index.html";
+var URL = "index.html";
 
 casper.test.begin("current user shown correctly", 2, function(test) {
     casper.start(URL).
