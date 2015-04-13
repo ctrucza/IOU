@@ -1,6 +1,5 @@
 ﻿window.onload = function () {
     setup_view();
-    setup_api();
     refresh_view();
 }
 
@@ -11,10 +10,6 @@ function setup_view() {
     view.refresh_button.click(function () {
         api.load_received_notes();
     });
-}
-
-function setup_api() {
-    api.delegate = delegate;
 }
 
 function refresh_view() {
@@ -37,3 +32,5 @@ var delegate = {
         api.load_sent_notes();
     }
 }
+
+var api = new Api(delegate, new FakeHttp());
