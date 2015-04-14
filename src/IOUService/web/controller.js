@@ -5,9 +5,18 @@
 
     var that = this;
 
+    //function get_recipient() {
+    //    return view.recipient_edit.val();
+    //}
+
     this.get_recipient = function() {
         return that.view.recipient_edit.val();
     };
+
+    //function send_note() {
+    //    api.send_note(get_recipient());
+
+    //}
 
     this.send_note = function () {
         that.api.send_note(that.get_recipient());
