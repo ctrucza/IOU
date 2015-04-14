@@ -1,15 +1,26 @@
 ﻿window.onload = function () {
-    setup_view();
     refresh_view();
 }
 
-function setup_view() {
-    view.send_button.click(function () {
-        api.send_note(view.recipient_edit.val());
-    });
-    view.refresh_button.click(function () {
-        api.load_received_notes();
-    });
+function Controller(view, api) {
+    this.api = api;
+    this.view = view;
+    var that = this;
+
+    this.get_recipient = function () {
+        return that.view.recipient_edit.val();
+    }
+
+    this.send_note = function () {
+        that.api.send_note(that.get_recipient());
+    }
+
+    this.reload_notes = function () {
+        that.api.load_received_notes();
+    }
+
+    this.view.send_button.click(this.send_note);
+    this.view.refresh_button.click(this.reload_notes);
 }
 
 function refresh_view() {
@@ -34,3 +45,4 @@ var delegate = {
 }
 
 var api = new Api(delegate, new FakeHttp());
+var controller = new Controller(view, api);
