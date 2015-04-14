@@ -3,8 +3,10 @@
 }
 
 function Controller(view, api) {
-    this.api = api;
     this.view = view;
+    this.api = api;
+    this.api.delegate = this;
+
     var that = this;
 
     this.get_recipient = function () {
@@ -21,6 +23,22 @@ function Controller(view, api) {
 
     this.view.send_button.click(this.send_note);
     this.view.refresh_button.click(this.reload_notes);
+
+    // delegate
+    this.on_current_user_loaded = function(current_user_name) {
+        that.view.current_username_label.text(current_user_name);
+    };
+
+    this.on_sent_notes_loaded = function(notes) {
+        that.view.show_sent_notes(notes);
+    };
+    this.on_received_notes_loaded = function(notes) {
+        that.view.show_received_notes(notes);
+    };
+
+    this.on_note_sent = function() {
+        that.api.load_sent_notes();
+    }
 }
 
 function refresh_view() {
@@ -29,20 +47,5 @@ function refresh_view() {
     api.load_received_notes();
 }
 
-var delegate = {
-    on_current_user_loaded: function (current_user_name) {
-        view.current_username_label.text(current_user_name);
-    },
-    on_sent_notes_loaded: function (notes) {
-        view.show_sent_notes(notes);
-    },
-    on_received_notes_loaded: function (notes) {
-        view.show_received_notes(notes);
-    },
-    on_note_sent: function() {
-        api.load_sent_notes();
-    }
-}
-
-var api = new Api(delegate, new FakeHttp());
+var api = new Api(new FakeHttp());
 var controller = new Controller(view, api);

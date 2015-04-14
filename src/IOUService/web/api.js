@@ -16,8 +16,8 @@
     }
 }
 
-function Api(delegate, http) {
-    this.delegate = delegate;
+function Api(http) {
+    this.delegate = undefined;
     this.http = http;
 
     this.load_current_user = function() {
