@@ -1,18 +1,7 @@
-﻿function Http() {
-    this.get = function (url, callback, data) {
-        $.ajax({
-            url: url,
-            type: "GET",
-            data: data,
-            success: callback
-        });
-    } 
-};
-
-function FakeHttp() {
+﻿function FakeHttp() {
     this.sent_notes = [];
     this.received_notes = [];
-    this.get = function(url, callback, data) {
+    this.get = function (url, callback, data) {
         if (url === "/api/IOU/GetCurrentUserName") {
             callback("John Doe");
         } else if (url === "/api/IOU/GetNotesSentByMe") {
@@ -24,7 +13,7 @@ function FakeHttp() {
             this.received_notes.push({ Sender: data.recipient, Recipient: "John Doe", Text: "Thank you, John Doe! Sincerely, Jane Doe" });
             callback();
         }
-    }   
+    }
 }
 
 function Api(delegate, http) {
