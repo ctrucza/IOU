@@ -22,22 +22,32 @@
 }
 
 function Api(http) {
-    this.delegate = undefined;
-    this.http = http;
+    var delegate = undefined;
+    function set_delegate(new_delegate) {
+        delegate = new_delegate;
+    }
 
-    this.load_current_user = function() {
-        this.http.get("/api/IOU/GetCurrentUserName", this.delegate.on_current_user_loaded);
+    function load_current_user() {
+        http.get("/api/IOU/GetCurrentUserName", delegate.on_current_user_loaded);
     };
 
-    this.load_sent_notes = function() {
-        this.http.get("/api/IOU/GetNotesSentByMe", this.delegate.on_sent_notes_loaded);
+    function load_sent_notes() {
+        http.get("/api/IOU/GetNotesSentByMe", delegate.on_sent_notes_loaded);
     };
 
-    this.load_received_notes = function () {
-        this.http.get("/api/IOU/GetMyNotes", this.delegate.on_received_notes_loaded);
+    function load_received_notes() {
+        http.get("/api/IOU/GetMyNotes", delegate.on_received_notes_loaded);
     };
 
-    this.send_note = function (recipient) {
-        this.http.get("/api/IOU/SendThankYouNoteTo", this.delegate.on_note_sent, { recipient: recipient });
+    function send_note(recipient) {
+        http.get("/api/IOU/SendThankYouNoteTo", delegate.on_note_sent, { recipient: recipient });
+    }
+
+    return {
+        set_delegate: set_delegate,
+        load_current_user: load_current_user,
+        load_sent_notes: load_sent_notes,
+        load_received_notes: load_received_notes,
+        send_note: send_note
     }
 }
