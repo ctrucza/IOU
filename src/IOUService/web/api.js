@@ -29,15 +29,15 @@ function Api(http) {
 
     function load_current_user() {
         http.get("/api/IOU/GetCurrentUserName", delegate.on_current_user_loaded);
-    };
+    }
 
     function load_sent_notes() {
         http.get("/api/IOU/GetNotesSentByMe", delegate.on_sent_notes_loaded);
-    };
+    }
 
     function load_received_notes() {
         http.get("/api/IOU/GetMyNotes", delegate.on_received_notes_loaded);
-    };
+    }
 
     function send_note(recipient) {
         http.get("/api/IOU/SendThankYouNoteTo", delegate.on_note_sent, { recipient: recipient });

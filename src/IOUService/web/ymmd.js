@@ -3,6 +3,4 @@
     var controller = new Controller(new View(), api);
 
     controller.refresh_ui();
-}
-
-
+};
