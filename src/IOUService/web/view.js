@@ -1,4 +1,13 @@
 ﻿function View() {
+    var current_username_label = $("#username");
+    function set_current_username(current_user_name) {
+        current_username_label.text(current_user_name);
+    }
+
+    var recipient_edit = $("#recipient");
+    function get_recipient(){
+        return recipient_edit.val();
+    };
 
     function show_sent_notes(notes) {
         display_notes_table("sent_notes_table", notes);
@@ -32,8 +41,8 @@
     var result = {
         send_button: $("#thank_you_button"),
         refresh_button: $("#refresh_button"),
-        recipient_edit: $("#recipient"),
-        current_username_label: $("#username"),
+        set_current_username: set_current_username,
+        get_recipient: get_recipient,
         show_sent_notes: show_sent_notes,
         show_received_notes: show_received_notes
     };

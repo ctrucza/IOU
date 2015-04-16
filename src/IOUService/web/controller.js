@@ -1,7 +1,7 @@
 ﻿function Controller(view, api) {
 
     function get_recipient() {
-        return view.recipient_edit.val();
+        return view.get_recipient();
     };
 
     function send_note() {
@@ -23,7 +23,7 @@
 
     // delegate
     function on_current_user_loaded(current_user_name) {
-        view.current_username_label.text(current_user_name);
+        view.set_current_username(current_user_name);
     };
 
     function on_sent_notes_loaded (notes) {
