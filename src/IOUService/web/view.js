@@ -1,11 +1,11 @@
 ﻿function View() {
     var send_button = $("#thank_you_button");
-    function set_send_button_handler(handler){
+    function set_send_button_handler(handler) {
         send_button.click(handler);
     }
 
     var refresh_button = $("#refresh_button");
-    function set_refresh_button_handler(handler){
+    function set_refresh_button_handler(handler ){
         refresh_button.click(handler);
     }
 
@@ -15,7 +15,7 @@
     }
 
     var recipient_edit = $("#recipient");
-    function get_recipient(){
+    function get_recipient() {
         return recipient_edit.val();
     }
 
@@ -31,7 +31,7 @@
         display_notes_table("received_notes_table", hacked);
     }
 
-    function display_notes_table (table_id, notes) {
+    function display_notes_table(table_id, notes) {
         var table = document.getElementById(table_id);
         clear_table(table);
 

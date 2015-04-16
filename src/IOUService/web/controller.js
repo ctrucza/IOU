@@ -26,15 +26,15 @@
         view.set_current_username(current_user_name);
     }
 
-    function on_sent_notes_loaded (notes) {
+    function on_sent_notes_loaded(notes) {
         view.show_sent_notes(notes);
     }
 
-    function on_received_notes_loaded (notes) {
+    function on_received_notes_loaded(notes) {
         view.show_received_notes(notes);
     }
 
-    function on_note_sent () {
+    function on_note_sent() {
         api.load_sent_notes();
     }
 

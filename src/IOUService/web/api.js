@@ -18,11 +18,11 @@
 
     return {
         get: get
-    }
+    };
 }
 
 function Api(http) {
-    var delegate = undefined;
+    var delegate;
     function set_delegate(new_delegate) {
         delegate = new_delegate;
     }
@@ -49,5 +49,5 @@ function Api(http) {
         load_sent_notes: load_sent_notes,
         load_received_notes: load_received_notes,
         send_note: send_note
-    }
+    };
 }

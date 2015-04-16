@@ -6,5 +6,5 @@
             data: data,
             success: callback
         });
-    }
+    };
 }
