@@ -1,4 +1,14 @@
 ﻿function View() {
+    var send_button = $("#thank_you_button");
+    function set_send_button_handler(handler){
+        send_button.click(handler);
+    };
+
+    var refresh_button = $("#refresh_button");
+    function set_refresh_button_handler(handler){
+        refresh_button.click(handler);
+    };
+
     var current_username_label = $("#username");
     function set_current_username(current_user_name) {
         current_username_label.text(current_user_name);
@@ -39,8 +49,8 @@
     };
 
     var result = {
-        send_button: $("#thank_you_button"),
-        refresh_button: $("#refresh_button"),
+        set_send_button_handler: set_send_button_handler,
+        set_refresh_button_handler: set_refresh_button_handler,
         set_current_username: set_current_username,
         get_recipient: get_recipient,
         show_sent_notes: show_sent_notes,

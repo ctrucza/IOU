@@ -12,8 +12,8 @@
         api.load_received_notes();
     };
 
-    view.send_button.click(send_note);
-    view.refresh_button.click(reload_notes);
+    view.set_send_button_handler(send_note);
+    view.set_refresh_button_handler(reload_notes);
 
     function refresh_ui() {
         api.load_current_user();
