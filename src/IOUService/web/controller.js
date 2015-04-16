@@ -2,11 +2,11 @@
 
     function get_recipient() {
         return view.recipient_edit.val();
-    }
+    };
 
     function send_note() {
         api.send_note(get_recipient());
-    }
+    };
 
     function reload_notes() {
         api.load_received_notes();
@@ -47,7 +47,7 @@
         on_sent_notes_loaded: on_sent_notes_loaded,
         on_received_notes_loaded: on_received_notes_loaded,
         on_note_sent: on_note_sent
-    }
+    };
 
     api.set_delegate(result);
 
