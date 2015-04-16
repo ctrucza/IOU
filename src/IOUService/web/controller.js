@@ -1,7 +1,7 @@
 ﻿function Controller(view, api) {
     this.view = view;
     this.api = api;
-    this.api.delegate = this;
+    this.api.set_delegate(this);
 
     var that = this;
 
