@@ -119,6 +119,7 @@
     <Content Include="web\IOUFacade.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="web\scripts\qunit-1.18.0.js" />
     <Content Include="web\styles\bootstrap-theme.min.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -128,6 +129,7 @@
     <Content Include="web\styles\main.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="web\ut.js" />
     <Content Include="web\view.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
