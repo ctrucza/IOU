@@ -4,17 +4,6 @@
 // the wait calls in the tests are not necessary in this case.
 var URL = "index.html";
 
-casper.test.begin("current user shown correctly", 2, function(test) {
-    casper.start(URL).
-        then(function () {
-            test.assertExists("#username");
-            test.assertSelectorHasText("#username", "John Doe");
-        }).
-        run(function() {
-            test.done();
-    });
-});
-
 function get_number_of_rows(table_selector) {
     var result = casper.evaluate(function (selector) {
         return $(selector).find("tr").length;
