@@ -1,6 +1,5 @@
 ﻿window.onload = function () {
-    var api = new Api(new FakeHttp());
-    var controller = new Controller(new View(), api);
+    var controller = new Controller(new View(), new Api());
 
     controller.refresh_ui();
 };
