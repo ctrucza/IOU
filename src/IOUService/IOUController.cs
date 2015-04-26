@@ -17,6 +17,7 @@ namespace IOUService
 
         public string GetCurrentUserName()
         {
+            //return "John Doe";
             return User.Identity.Name;
         }
 
@@ -25,6 +26,7 @@ namespace IOUService
         public void SendThankYouNoteTo(string recipient)
         {
             Notes.Add(new Note(me, recipient));
+            Notes.Add(new Note(recipient, me));
         }
 
         [HttpGet]

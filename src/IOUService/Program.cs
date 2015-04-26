@@ -47,7 +47,8 @@ namespace IOUService
         {
             using (WebApp.Start<Startup>(url: "http://+:4242/"))
             {
-                Console.Write("IOU server running on port 4242");
+                Console.WriteLine("IOU server running on port 4242");
+                Console.WriteLine("Press any key to stop");
                 Console.ReadLine();
             }
         }
