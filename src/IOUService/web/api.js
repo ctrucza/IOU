@@ -13,6 +13,9 @@
             sent_notes.push({ Sender: "John Doe", Recipient: data.recipient, Text: "Thank you, Jane Doe! Sincerely, John Doe" });
             received_notes.push({ Sender: data.recipient, Recipient: "John Doe", Text: "Thank you, John Doe! Sincerely, Jane Doe" });
             callback();
+        } else if (url === "/api/IOU/GetAllUsers") {
+            var result = ["me", "myself", "Irene"];
+            callback(result);
         }
     }
 
@@ -44,11 +47,16 @@ function Api() {
         http.get("/api/IOU/SendThankYouNoteTo", delegate.on_note_sent, { recipient: recipient });
     }
 
+    function get_all_users(search_term, callback) {
+        http.get("/api/IOU/GetAllUsers", callback, { term: search_term });
+    }
+
     return {
         set_delegate: set_delegate,
         load_current_user: load_current_user,
         load_sent_notes: load_sent_notes,
         load_received_notes: load_received_notes,
-        send_note: send_note
+        send_note: send_note,
+        get_all_users: get_all_users
     };
 }

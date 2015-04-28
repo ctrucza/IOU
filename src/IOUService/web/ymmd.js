@@ -29,6 +29,10 @@
     ];
 
     $("#recipient").autocomplete({
-        source: availableTags
+        source: function (request, response) {
+            var search_term = request.term;
+            var api = new Api();
+            api.get_all_users(search_term, response);
+        }
     });
 };
