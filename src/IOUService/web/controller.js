@@ -39,8 +39,6 @@
     }
 
     var result = {
-        send_note: send_note,
-        reload_notes: reload_notes,
         refresh_ui: refresh_ui,
 
         on_current_user_loaded: on_current_user_loaded,
