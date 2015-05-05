@@ -48,12 +48,17 @@
         $(table).find("tr").not(":first").remove();
     }
 
+    function init_autocomplete(source) {
+        $("#recipient").autocomplete({ source: source });
+    }
+
     return {
         set_send_button_handler: set_send_button_handler,
         set_refresh_button_handler: set_refresh_button_handler,
         set_current_username: set_current_username,
         get_recipient: get_recipient,
         show_sent_notes: show_sent_notes,
-        show_received_notes: show_received_notes
+        show_received_notes: show_received_notes,
+        init_autocomplete : init_autocomplete
     };
 }
