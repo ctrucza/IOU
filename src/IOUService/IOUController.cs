@@ -1,11 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.DirectoryServices.AccountManagement;
 
 namespace IOUService
 {
     public class IOUController : ApiController
     {
+        public List<string> GetAllUsers(string term)
+        {
+            using (PrincipalContext context = new PrincipalContext(ContextType.Domain))
+            {
+                UserPrincipal qbeUser = new UserPrincipal(context);
+                qbeUser.SamAccountName = "*" + term + "*";
+                PrincipalSearcher search = new PrincipalSearcher(qbeUser);
+                var users = search.FindAll();
+                var result = users.Select(p => p.Name).ToList();
+                return result;
+            } 
+        }
+
         private static readonly List<Note> Notes = new List<Note>();
 
         private readonly string me;
