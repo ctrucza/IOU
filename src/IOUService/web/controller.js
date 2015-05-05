@@ -12,9 +12,15 @@
         api.load_received_notes();
     }
 
+    function on_users_search(request, response) {
+        var search_term = request.term;
+        api.get_all_users(search_term, response);
+    }
+
     view.set_send_button_handler(send_note);
     view.set_refresh_button_handler(reload_notes);
-
+    view.init_autocomplete(on_users_search);
+    
     function refresh_ui() {
         api.load_current_user();
         api.load_sent_notes();
@@ -39,8 +45,6 @@
     }
 
     var result = {
-        send_note: send_note,
-        reload_notes: reload_notes,
         refresh_ui: refresh_ui,
 
         on_current_user_loaded: on_current_user_loaded,
