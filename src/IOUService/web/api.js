@@ -26,7 +26,7 @@
 
 function Api() {
     var delegate;
-    var http = new Http();
+    var http = new FakeHttp();
     function set_delegate(new_delegate) {
         delegate = new_delegate;
     }
