@@ -47,8 +47,8 @@ function Api() {
         http.get("/api/IOU/SendThankYouNoteTo", delegate.on_note_sent, { recipient: recipient });
     }
 
-    function get_all_users(search_term, callback) {
-        http.get("/api/IOU/GetAllUsers", callback, { term: search_term });
+    function get_all_users(search_term) {
+        http.get("/api/IOU/GetAllUsers", delegate.on_users_filtered, { term: search_term });
     }
 
     return {
