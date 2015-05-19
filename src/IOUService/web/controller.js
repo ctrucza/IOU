@@ -13,12 +13,11 @@
     }
 
 
-    var auto_callback;
+    var autocomplete_callback;
     function filter_users(request, callback) {
-        auto_callback = callback;
+        autocomplete_callback = callback;
         var search_term = request.term;
         api.get_all_users(search_term);
-        //callback(filtered_users);
     }
 
     view.set_send_button_handler(send_note);
@@ -49,7 +48,7 @@
     }
 
     function on_users_filtered(users) {
-        auto_callback(users);
+        autocomplete_callback(users);
     }
 
     var result = {
