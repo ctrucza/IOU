@@ -19,6 +19,12 @@
         return recipient_edit.val();
     }
 
+    function set_recipient_autocomplete_source(source) {
+        $("#recipient").autocomplete({
+            source: source
+        });
+    }
+
     function show_sent_notes(notes) {
         display_notes_table("sent_notes_table", notes);
     }
@@ -48,16 +54,10 @@
         $(table).find("tr").not(":first").remove();
     }
 
-    function init_autocomplete(source) {
-        $("#recipient").autocomplete({
-            source: source
-        });
-    }
-
     return {
         set_send_button_handler: set_send_button_handler,
         set_refresh_button_handler: set_refresh_button_handler,
-        init_autocomplete: init_autocomplete,
+        set_recipient_autocomplete_source: set_recipient_autocomplete_source,
         set_current_username: set_current_username,
         get_recipient: get_recipient,
         show_sent_notes: show_sent_notes,

@@ -1,28 +1,21 @@
 ﻿function Controller(view, api) {
 
-    function get_recipient() {
-        return view.get_recipient();
-    }
+    var result;
 
-    function send_note() {
-        api.send_note(get_recipient());
-    }
+    view.set_send_button_handler(function () {
+        var recipient = view.get_recipient();
+        api.send_note(recipient);
+    });
 
-    function reload_notes() {
+    view.set_refresh_button_handler(function () {
         api.load_received_notes();
-    }
+    });
 
-
-    var autocomplete_callback;
-    function filter_users(request, callback) {
-        autocomplete_callback = callback;
+    view.set_recipient_autocomplete_source(function (request, callback) {
+        result.on_users_filtered = callback;
         var search_term = request.term;
-        api.get_all_users(search_term);
-    }
-
-    view.set_send_button_handler(send_note);
-    view.set_refresh_button_handler(reload_notes);
-    view.init_autocomplete(filter_users);
+        api.filter_users(search_term);
+    });
 
     function refresh_ui() {
         api.load_current_user();
@@ -47,19 +40,13 @@
         api.load_sent_notes();
     }
 
-    function on_users_filtered(users) {
-        autocomplete_callback(users);
-    }
-
-    var result = {
+    result = {
         refresh_ui: refresh_ui,
 
         on_current_user_loaded: on_current_user_loaded,
         on_sent_notes_loaded: on_sent_notes_loaded,
         on_received_notes_loaded: on_received_notes_loaded,
-        on_note_sent: on_note_sent,
-
-        on_users_filtered: on_users_filtered
+        on_note_sent: on_note_sent
     };
 
     api.set_delegate(result);
