@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+
+<html data-ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Index</title>
+
+    <script type="text/ng-template" id="node-directive.html">
+        <div class="inline" ng-switch data-on="type">
+            <!-- Check out the hack related to property order (angular sorts properties, we don't want that) -->
+            <div class="inline" ng-switch-when="object">
+                <span>{</span>
+
+                <div class="child-node" ng-repeat='key in notSorted(nodeValue)'>
+                    "{{ key }}" :
+                    <div class="node" data-node data-node-value="nodeValue[key]"></div>
+                </div>
+                <span>}</span>
+            </div>
+
+            <div class="array" ng-switch-when="array">
+                <span>[</span>
+
+                <div class="child-node" ng-repeat='(index, item) in nodeValue'>
+                    <div class="node" data-node data-node-value="item"></div>
+                </div>
+                <span>]</span>
+            </div>
+
+            <div class="href" data-linkify ng-switch-when="href">{{ nodeValue }}</div>
+            <div class="number" ng-switch-when="number">{{ nodeValue }}</div>
+            <div class="string" ng-switch-when="string">"{{ nodeValue }}"</div>
+            <div class="boolean" ng-switch-when="boolean">{{ nodeValue }}</div>
+        </div>
+    </script>
+</head>
+
+<body>
+<div class="content">
+
+    <div data-ng-controller="ConfigController">
+        <div class="input-group">
+            <span class="input-group-addon">Home</span>
+            <input type="text" ng-model="config.home" class="form-control">
+        </div>
+    </div>
+
+    <div data-ng-controller="WorkspaceController" class="workspace">
+
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button class="btn btn-primary btn-info" ng-click="goHome()" tooltip="Go home">
+                    <span class="glyphicon glyphicon-home"></span>
+                </button>
+            </div>
+
+            <div class="btn-group">
+                <label class="btn btn-primary btn-info" ng-model="request.method" btn-radio="'get'" tooltip="GET">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </label>
+
+                <label class="btn btn-primary btn-info" ng-model="request.method" btn-radio="'post'" tooltip="POST">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                </label>
+
+                <label class="btn btn-primary btn-info" ng-model="request.method" btn-radio="'delete'" tooltip="DELETE">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </label>
+            </div>
+
+        </div>
+
+        <div>
+            <accordion close-others="true">
+                <accordion-group heading="HTTP headers">
+                    Not implemented.
+                </accordion-group>
+
+                <accordion-group heading="GET parameters / POST body" is-open="true">
+                    <div>
+                        <textarea class="form-control" json-input rows="3" ng-model="request.data"></textarea>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+
+        <div>
+            <div class="response-container">
+                <div>
+                    <div data-node data-node-value="response.data"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ng-controller="HistoryController">
+        <div class="btn-toolbar history-buttons">
+            <div class="btn-group">
+                <button class="btn btn-primary btn-primary" ng-disabled="history.prev.length <= 1" ng-click="goBack()">
+                    Back
+                </button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary btn-primary" ng-disabled="history.next.length == 0"
+                        ng-click="goForward()">
+                    Forward
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="vendor/angular.js"></script>
+<script src="vendor/angular-recursion.js"></script>
+<script src="vendor/angular-ui-bootstrap.js"></script>
+<script src="vendor/lodash.min.js"></script>
+<script src="vendor/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var app = angular.module('app', ['RecursionHelper', 'ui.bootstrap']);
+</script>
+
+<script src="main.js"></script>
+<script src="history.js"></script>
+<script src="directives.js"></script>
+</body>
+</html>
