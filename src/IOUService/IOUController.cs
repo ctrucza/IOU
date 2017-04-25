@@ -7,6 +7,7 @@ namespace IOUService
 {
     public class IOUController : ApiController
     {
+        [PublicCache]
         public List<string> GetAllUsers(string term)
         {
             using (PrincipalContext context = new PrincipalContext(ContextType.Domain))
@@ -43,12 +44,15 @@ namespace IOUService
             Notes.Add(new Note(recipient, me));
         }
 
+        [NoCache]
         [HttpGet]
         public IEnumerable<Note> GetNotesSentByMe()
         {
             return Notes.Where(note => note.Sender == me);
         }
 
+        [NoCache]
+        [HttpGet]
         public IEnumerable<Note> GetMyNotes()
         {
             return Notes.Where(note => note.Recipient == me);

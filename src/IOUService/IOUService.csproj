@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheControlAttribute.cs" />
     <Compile Include="IOUController.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Program.cs" />
